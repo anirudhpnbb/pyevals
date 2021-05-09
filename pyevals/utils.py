@@ -1,7 +1,7 @@
 import numpy as np
 import numbers
 from scipy.sparse import csr_matrix
-from exceptions import *
+from pyevals.exceptions import *
 
 
 def simple_error(actual: np.ndarray, predicted: np.ndarray):
@@ -142,3 +142,12 @@ def check_targets(actual, predicted):
         y_type = 'multilabel-indicator'
 
     return y_type, actual, predicted
+
+
+def CalcuateRows(TotalPlots):
+    if TotalPlots <= 3:
+        return 2
+    elif TotalPlots % 3 == 0:
+        return (int(TotalPlots / 3))
+    else:
+        return (TotalPlots // 3 + 1)

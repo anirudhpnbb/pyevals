@@ -1,8 +1,13 @@
 from pyevals import BuildClassification
 from pyevals import BuildRegression
 from pyevals import Plots
-import pandas as pd
 import warnings
+from pkgutil import find_loader
+
+pandas_installed = find_loader("pandas") is not None
+
+if pandas_installed:
+    import pandas as pd
 
 warnings.filterwarnings('ignore')
 
@@ -18,7 +23,10 @@ class BuildPlots:
         self.CategoricalFeatures = CategoricalFeatures
         self.ContinuousFeatures = ContinuousFeatures
 
+        print("Building the plots and a folder is being generated."
+              " Keep watching your current directory for any changes.")
         Plots.MakePlots(self.data, self.CategoricalFeatures, self.ContinuousFeatures)
+        print("Folder with various plots created.")
 
 
 class build:
@@ -153,5 +161,5 @@ class build:
             else:
                 print("Check the Arguments Passed.\nPlease Check the 'Usage' in the PyPi.")
 
-        except:
-            print("Please check the arguments Passed.")
+        except Exception as ex:
+            print("Please check the arguments Passed.{0}".format(ex))

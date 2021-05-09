@@ -1,4 +1,4 @@
-from utils import *
+from pyevals.utils import *
 from sklearn.metrics import accuracy_score, recall_score, precision_score, roc_auc_score, classification_report, f1_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -16,7 +16,7 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.datasets import make_classification
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.metrics._classification import *
-from exceptions import *
+from pyevals.exceptions import *
 
 
 def metrics(actual, predicted, labels=None):
